@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ConsistencyVisual, CollectionsVisual, KeysVisual, ProvidersVisual, RealismVisual, SwapVisual } from "@/components/FeatureVisuals";
 import { getUser } from "@/lib/auth";
 
 const STEPS = [
@@ -8,13 +9,13 @@ const STEPS = [
   { n: "4", t: "Animación", d: "Vídeo con frame inicial y final con Veo y Kling. Próximamente." },
 ];
 
-const FEATURES = [
-  { t: "Consistencia total", d: "Tu modelo usa su cara de referencia y su prompt en cada imagen, así que se ve igual en cualquier escena." },
-  { t: "Realismo fotográfico", d: "Estilo de poros, imperfecciones y luz natural para que el resultado no parezca plástico." },
-  { t: "Intercambiar cara", d: "Sube referencias de Pinterest y tu modelo las recrea con su cara: misma pose, ropa, fondo y luz." },
-  { t: "Varios proveedores de IA", d: "Gemini (Nano Banana), OpenAI (GPT Image) y Replicate (Flux). Cambias de uno a otro en un clic." },
-  { t: "Tus propias API keys", d: "Conectas tus claves en Configuración, se verifican al guardar y se almacenan cifradas. Pagas directo a cada proveedor." },
-  { t: "Colecciones y galería", d: "Organiza lo que generas por modelo y colección, y descárgalo cuando quieras." },
+const FEATURES: { t: string; d: string; v: React.ReactNode }[] = [
+  { t: "Consistencia total", d: "Tu modelo usa su cara de referencia y su prompt en cada imagen, así que se ve igual en cualquier escena.", v: <ConsistencyVisual /> },
+  { t: "Realismo fotográfico", d: "Estilo de poros, imperfecciones y luz natural para que el resultado no parezca plástico.", v: <RealismVisual /> },
+  { t: "Intercambiar cara", d: "Sube referencias de Pinterest y tu modelo las recrea con su cara: misma pose, ropa, fondo y luz.", v: <SwapVisual /> },
+  { t: "Varios proveedores de IA", d: "Gemini (Nano Banana), OpenAI (GPT Image) y Replicate (Flux). Cambias de uno a otro en un clic.", v: <ProvidersVisual /> },
+  { t: "Tus propias API keys", d: "Conectas tus claves en Configuración, se verifican al guardar y se almacenan cifradas. Pagas directo a cada proveedor.", v: <KeysVisual /> },
+  { t: "Colecciones y galería", d: "Organiza lo que generas por modelo y colección, y descárgalo cuando quieras.", v: <CollectionsVisual /> },
 ];
 
 export default async function Landing() {
@@ -55,6 +56,7 @@ export default async function Landing() {
           <div className="cards3">
             {FEATURES.map((f) => (
               <div key={f.t} className="card">
+                {f.v}
                 <div className="name">{f.t}</div>
                 <p className="used">{f.d}</p>
               </div>

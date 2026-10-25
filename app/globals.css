@@ -123,3 +123,24 @@ a.btn-link.big.primary { color:#fff; }
 .pm-head { padding:10px 12px; border-bottom:1px solid var(--line); margin-bottom:4px; }
 .pm-out { width:100%; text-align:left; border:0; padding:10px 12px; color:var(--muted); }
 .pm-out:hover { background:var(--bg); color:var(--text); }
+.vis { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px; margin-bottom:14px; height:200px; overflow:hidden; display:flex; flex-direction:column; justify-content:center; gap:8px; }
+.vis-row { display:flex; justify-content:center; gap:10px; }
+.vis-col { display:flex; flex-direction:column; align-items:center; gap:4px; flex:1; min-width:0; max-width:96px; }
+.vis-col span { font-size:11px; color:var(--muted); white-space:nowrap; }
+.vis-note { text-align:center; font-size:12px; color:var(--accent); }
+.vis-arrow { color:var(--accent); font-size:22px; }
+.person { width:100%; border-radius:8px; display:block; }
+.skin { width:100%; display:block; }
+.ui-list { display:flex; flex-direction:column; gap:6px; }
+.ui-item { display:flex; justify-content:space-between; align-items:center; padding:8px 10px; border:1px solid var(--line); border-radius:8px; font-size:13px; }
+.ui-item span { display:block; font-size:11px; color:var(--muted); }
+.ui-item.on { border-color:var(--accent); }
+.ui-item em { color:var(--accent); font-style:normal; }
+.ui-field span { font-size:11px; color:var(--muted); }
+.ui-field div { margin-top:4px; padding:9px 10px; border:1px solid var(--line); border-radius:8px; background:var(--bg); letter-spacing:2px; color:var(--muted); }
+.ui-ok { padding:7px 10px; border-radius:8px; background:rgba(62,207,142,.12); color:var(--ok); font-size:12px; }
+.ui-chips { display:flex; gap:6px; flex-wrap:wrap; }
+.ui-chips span { font-size:11px; padding:3px 9px; border:1px solid var(--line); border-radius:99px; color:var(--muted); }
+.ui-chips span.on { border-color:var(--accent); color:var(--accent); }
+.ui-tiles { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+.ui-tiles div { aspect-ratio:3/2; border-radius:6px; border:1px solid var(--line); }
