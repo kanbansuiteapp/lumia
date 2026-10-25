@@ -3,6 +3,7 @@ import { BUCKET, db } from "./db";
 export type AdminUser = {
   id: string;
   email: string;
+  name: string;
   created_at: string;
   last_sign_in_at: string | null;
   confirmed: boolean;
@@ -31,6 +32,7 @@ export async function listAdminUsers(): Promise<{ users: AdminUser[]; orphans: {
   const users = (data?.users ?? []).map((u) => ({
     id: u.id,
     email: u.email ?? "(sin correo)",
+    name: (u.user_metadata?.full_name as string) ?? "",
     created_at: u.created_at,
     last_sign_in_at: u.last_sign_in_at ?? null,
     confirmed: !!u.email_confirmed_at,

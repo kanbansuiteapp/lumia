@@ -116,3 +116,9 @@ a.btn-link.big.primary { color:#fff; }
 .tbl th { text-align:left; color:var(--muted); font-weight:500; padding:12px 14px; border-bottom:1px solid var(--line); white-space:nowrap; }
 .tbl td { padding:12px 14px; border-bottom:1px solid var(--line); }
 .tbl tr:last-child td { border-bottom:0; }
+.profile { margin-left:8px; }
+.avatar-btn { width:36px; height:36px; border-radius:50%; background:var(--accent); color:#fff; border:0; padding:0; font-weight:700; font-size:15px; display:flex; align-items:center; justify-content:center; }
+.avatar-btn:hover { filter:brightness(1.1); }
+.pm-head { padding:10px 12px; border-bottom:1px solid var(--line); margin-bottom:4px; }
+.pm-out { width:100%; text-align:left; border:0; padding:10px 12px; color:var(--muted); }
+.pm-out:hover { background:var(--bg); color:var(--text); }

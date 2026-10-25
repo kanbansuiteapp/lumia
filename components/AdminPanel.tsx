@@ -74,7 +74,7 @@ export default function AdminPanel() {
             {!loaded && <tr><td colSpan={8} className="used">Cargando...</td></tr>}
             {users.map((u) => (
               <tr key={u.id}>
-                <td>{u.email}{u.id === me && <span className="tag"> (tú)</span>}{u.admin && <span className="tag"> · super admin</span>}</td>
+                <td>{u.name && <div>{u.name}</div>}<span className={u.name ? "used" : ""}>{u.email}</span>{u.id === me && <span className="tag"> (tú)</span>}{u.admin && <span className="tag"> · super admin</span>}</td>
                 <td>{fmt(u.created_at)}</td>
                 <td>{fmt(u.last_sign_in_at)}</td>
                 <td>{u.models}</td>

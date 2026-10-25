@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import ProfileMenu from "./ProfileMenu";
 
 const GENERAR = [
   { href: "/imagen", label: "Imagen", sub: "Generar imagen de IA" },
@@ -12,7 +13,7 @@ const GENERAR = [
   { href: "/video", label: "Vídeo", sub: "Generar vídeo de IA" },
 ];
 
-export default function TopNav({ email, admin }: { email: string; admin: boolean }) {
+export default function TopNav({ email, name, admin }: { email: string; name: string; admin: boolean }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -47,10 +48,7 @@ export default function TopNav({ email, admin }: { email: string; admin: boolean
         <span className="spacer" />
         {admin && <Link href="/admin" className={path.startsWith("/admin") ? "active" : ""}>Admin</Link>}
         <Link href="/configuracion" className={path.startsWith("/configuracion") ? "active" : ""}>Configuración</Link>
-        <form action="/auth/logout" method="post" className="userbox">
-          <span className="used" title={email}>{email}</span>
-          <button type="submit" className="navbtn">Cerrar sesión</button>
-        </form>
+        <ProfileMenu name={name} email={email} admin={admin} />
       </div>
     </header>
   );
