@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getUser, influencerIds, ownsInfluencer, unauthorized } from "@/lib/auth";
 import { BUCKET, db } from "@/lib/db";
-import { toInline } from "@/lib/generate";
+import { IMAGE_MIMES, toInline } from "@/lib/generate";
 
 export const runtime = "nodejs";
 
@@ -47,8 +47,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, message: "Falta la imagen o el modelo." }, { status: 400 });
   if (!["base", "angle", "lifestyle"].includes(kind)) return NextResponse.json({ ok: false, message: "Tipo no válido." }, { status: 400 });
 
-  const img = await toInline(image);
-  const ext = img.mimeType.split("/")[1] ?? "jpeg";
+  let img;
+  try {
+    img = await toInline(image);
+  } catch (e) {
+    return NextResponse.json({ ok: false, message: e instanceof Error ? e.message : "Imagen no válida." }, { status: 400 });
+  }
+  if (!IMAGE_MIMES.includes(img.mimeType)) return NextResponse.json({ ok: false, message: "Solo se admiten imágenes JPG, PNG o WebP." }, { status: 400 });
+  const ext = img.mimeType.split("/")[1];
   const path = `${influencerId}/${Date.now()}-${Math.random().toString(36).slice(2, 6)}.${ext}`;
   const up = await db().storage.from(BUCKET).upload(path, Buffer.from(img.data, "base64"), { contentType: img.mimeType });
   if (up.error) return NextResponse.json({ ok: false, message: `No se pudo guardar la imagen: ${up.error.message}` }, { status: 500 });

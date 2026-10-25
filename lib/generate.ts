@@ -7,11 +7,18 @@ import { loadCredentials } from "./store";
 // Solo se aceptan data URLs o imágenes de nuestro propio almacenamiento (evita que el servidor descargue URLs arbitrarias).
 const OWN_STORAGE = () => `${process.env.SUPABASE_URL}/storage/v1/object/public/`;
 
+export const IMAGE_MIMES = ["image/jpeg", "image/png", "image/webp"];
+const MAX_REF_BYTES = 8 * 1024 * 1024; // por imagen de referencia
+const MAX_REFS = 10;
+
 export async function toInline(ref: string): Promise<Inline> {
   if (!ref.startsWith("data:") && !ref.startsWith(OWN_STORAGE())) throw new Error("Imagen de referencia no permitida.");
   if (ref.startsWith("data:")) {
     const [meta, data] = ref.split(",");
-    return { mimeType: meta.slice(5, meta.indexOf(";")), data };
+    const mimeType = meta.slice(5, meta.indexOf(";"));
+    if (!IMAGE_MIMES.includes(mimeType)) throw new Error("Solo se admiten imágenes JPG, PNG o WebP.");
+    if (data.length * 0.75 > MAX_REF_BYTES) throw new Error("La imagen supera los 8 MB.");
+    return { mimeType, data };
   }
   const res = await fetch(ref);
   if (!res.ok) throw new Error("No se pudo descargar la imagen de referencia.");
@@ -39,6 +46,12 @@ export type GenResult =
 export async function runGeneration(userId: string, o: GenOpts): Promise<GenResult> {
   const fail = (message: string, status = 400): GenResult => ({ ok: false, message, status });
   if (!(await ownsInfluencer(userId, o.influencerId))) return fail("Elige o crea un modelo.", 404);
+  if (!["base", "angle", "lifestyle"].includes(o.kind)) return fail("Tipo de imagen no válido.");
+  if ((o.references?.length ?? 0) > MAX_REFS) return fail(`Máximo ${MAX_REFS} imágenes de referencia.`);
+  if (o.collectionId) {
+    const { data: col } = await db().from("collections").select("id").eq("id", o.collectionId).eq("influencer_id", o.influencerId).maybeSingle();
+    if (!col) return fail("La colección no pertenece a este modelo.", 404);
+  }
   if (!o.prompt?.trim()) return fail("Escribe un prompt.");
   const info = MODELS.find((m) => m.id === o.model);
   if (!info) return fail("Modelo de IA no válido.");
