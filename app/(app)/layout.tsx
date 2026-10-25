@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import TopNav from "@/components/TopNav";
-import { getUser } from "@/lib/auth";
+import { getUser, isSuperAdmin } from "@/lib/auth";
 
 export default async function AppLayout({ children }: { children: ReactNode }) {
   const user = await getUser();
   return (
     <>
-      <TopNav email={user?.email ?? ""} />
+      <TopNav email={user?.email ?? ""} admin={isSuperAdmin(user)} />
       {children}
     </>
   );

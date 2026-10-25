@@ -111,3 +111,8 @@ a.btn-link.big.primary { color:#fff; }
 @media (max-width:760px) { .top .userbox .used { display:none; } }
 .page { min-height:100vh; display:flex; flex-direction:column; }
 .page-body { flex:1; }
+.stat { font-size:28px; font-weight:700; }
+.tbl { width:100%; border-collapse:collapse; font-size:14px; }
+.tbl th { text-align:left; color:var(--muted); font-weight:500; padding:12px 14px; border-bottom:1px solid var(--line); white-space:nowrap; }
+.tbl td { padding:12px 14px; border-bottom:1px solid var(--line); }
+.tbl tr:last-child td { border-bottom:0; }

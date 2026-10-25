@@ -12,7 +12,7 @@ const GENERAR = [
   { href: "/video", label: "Vídeo", sub: "Generar vídeo de IA" },
 ];
 
-export default function TopNav({ email }: { email: string }) {
+export default function TopNav({ email, admin }: { email: string; admin: boolean }) {
   const path = usePathname();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -45,6 +45,7 @@ export default function TopNav({ email }: { email: string }) {
         <Link href="/modelos" className={path.startsWith("/modelos") ? "active" : ""}>Mis modelos</Link>
         <Link href="/galeria" className={path.startsWith("/galeria") ? "active" : ""}>Galería</Link>
         <span className="spacer" />
+        {admin && <Link href="/admin" className={path.startsWith("/admin") ? "active" : ""}>Admin</Link>}
         <Link href="/configuracion" className={path.startsWith("/configuracion") ? "active" : ""}>Configuración</Link>
         <form action="/auth/logout" method="post" className="userbox">
           <span className="used" title={email}>{email}</span>
