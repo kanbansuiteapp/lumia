@@ -5,7 +5,7 @@ import { getUser } from "@/lib/auth";
 export default async function PublicLayout({ children }: { children: ReactNode }) {
   const user = await getUser();
   return (
-    <>
+    <div className="page">
       <header className="top">
         <div className="top-in">
           <Link href="/" className="logo">Lumia</Link>
@@ -23,11 +23,11 @@ export default async function PublicLayout({ children }: { children: ReactNode }
           )}
         </div>
       </header>
-      {children}
+      <div className="page-body">{children}</div>
       <footer className="foot">
         <div>© {new Date().getFullYear()} Lumia · Crea tu influencer con IA</div>
         <div className="used">Sube solo imágenes propias, de personajes ficticios o con permiso de la persona retratada.</div>
       </footer>
-    </>
+    </div>
   );
 }

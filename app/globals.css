@@ -109,3 +109,5 @@ a.btn-link.big.primary { color:#fff; }
 .foot { border-top:1px solid var(--line); padding:32px 16px; text-align:center; color:var(--muted); display:flex; flex-direction:column; gap:4px; }
 .authbox { max-width:420px; padding-top:64px; }
 @media (max-width:760px) { .top .userbox .used { display:none; } }
+.page { min-height:100vh; display:flex; flex-direction:column; }
+.page-body { flex:1; }
