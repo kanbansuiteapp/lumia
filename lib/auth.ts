@@ -30,7 +30,7 @@ export function originOf(req: Request) {
 
 // Super admin = usuario con app_metadata.role = "superadmin" en Supabase Auth.
 // Solo se puede asignar desde Supabase (panel o API de servicio); un usuario no puede editarlo.
-export function isSuperAdmin(user: { app_metadata?: { role?: string } | null } | null | undefined) {
+export function isSuperAdmin(user: { app_metadata?: Record<string, unknown> | null } | null | undefined) {
   return user?.app_metadata?.role === "superadmin";
 }
 
