@@ -146,9 +146,17 @@ a.btn-link.big.primary { color: #fff; }
    ============================================================ */
 
 /* Ambient Glow Orbs */
+.public-page-body {
+  max-width: 100% !important;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 .landing-container {
   position: relative;
   overflow: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 .ambient-glow {
   position: absolute;
@@ -712,26 +720,43 @@ a.btn-link.big.primary { color: #fff; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #090b10;
-  min-height: 440px;
+  background: radial-gradient(circle at center, #181c2b 0%, #090b10 100%);
+  min-height: 520px;
+  padding: 18px;
+}
+.canvas-frame {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  max-height: 520px;
+  aspect-ratio: 3 / 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #0d0f17;
 }
 .canvas-main-img {
   width: 100%;
   height: 100%;
-  max-height: 520px;
   object-fit: cover;
+  object-position: center center;
   display: block;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .canvas-main-img.zoom-scale {
-  transform: scale(1.85);
-  transform-origin: 50% 30%;
+  transform: scale(1.65);
+  transform-origin: 50% 35%;
 }
 
 /* Biometric HUD Overlay */
 .biometric-hud {
   position: absolute;
-  inset: 20px;
+  inset: 12px;
   pointer-events: none;
 }
 .hud-corner {
@@ -771,10 +796,10 @@ a.btn-link.big.primary { color: #fff; }
   backdrop-filter: blur(6px);
   white-space: nowrap;
 }
-.marker-eye-l { top: 32%; left: 44%; }
-.marker-eye-r { top: 32%; left: 56%; }
-.marker-nose { top: 40%; left: 50%; }
-.marker-skin { top: 48%; left: 38%; }
+.marker-eye-l { top: 35%; left: 40%; }
+.marker-eye-r { top: 35%; left: 58%; }
+.marker-nose { top: 48%; left: 50%; }
+.marker-skin { top: 54%; left: 34%; }
 
 .hud-scanline {
   position: absolute;
@@ -1932,9 +1957,17 @@ a.btn-link.big.primary { color: #fff; }
 /* ============================================================
    RESPONSIVE BREAKPOINTS
    ============================================================ */
-@media (max-width: 980px) {
+@media (max-width: 1040px) {
+  .desktop-nav { gap: 2px; }
+  .desktop-nav a { padding: 6px 10px; font-size: 13px; }
+  .studio-grid { grid-template-columns: 290px 1fr; }
+}
+
+@media (max-width: 860px) {
+  .desktop-nav { display: none; }
   .studio-grid { grid-template-columns: 1fr; }
   .studio-sidebar { border-right: none; border-bottom: 1px solid var(--line-light); }
+  .canvas-frame { max-height: 460px; }
   .method-card-display { grid-template-columns: 1fr; }
   .byok-banner { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr 1fr; }
@@ -1945,8 +1978,7 @@ a.btn-link.big.primary { color: #fff; }
   .post-modal-grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 768px) {
-  .desktop-nav { display: none; }
+@media (max-width: 640px) {
   .hero-modern { padding: 48px 0 60px; }
   .sec-modern { padding: 60px 0; }
   .foot-grid { grid-template-columns: 1fr; }

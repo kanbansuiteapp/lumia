@@ -46,7 +46,7 @@ export default async function PublicLayout({ children }: { children: ReactNode }
         </div>
       </header>
 
-      <main className="page-body">{children}</main>
+      <div className="page-body public-page-body">{children}</div>
 
       <footer className="modern-foot">
         <div className="wrap foot-wrap">

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 
-type ViewKey = "base" | "three_quarter" | "profile" | "cafe" | "travel";
+type ViewKey = "base" | "three_quarter" | "profile" | "editorial" | "cafe" | "travel";
 
 interface ViewDetail {
   id: ViewKey;
@@ -20,18 +20,18 @@ interface ViewDetail {
 const VIEWS: Record<ViewKey, ViewDetail> = {
   base: {
     id: "base",
-    title: "Rostro Base (Frontal)",
+    title: "1. Frontal Base (Canónica)",
     category: "Modelo de Identidad",
-    image: "/images/hero_influencer.jpg",
+    image: "/images/angle_front.jpg",
     badge: "Identidad Base Fijada",
     similarity: "100% Biometría Maestra",
-    promptSnippet: "Ultra-photorealistic 35mm portrait, hazel green eyes, natural micro-pores, soft daylight, 85mm f/1.4 lens",
+    promptSnippet: "Clean studio test shot, front-facing angle, looking directly into camera, natural skin pores, hazel green eyes",
     resolution: "4K UHD • 2400x3200",
     lighting: "Luz suave de estudio con reflejo natural en iris",
   },
   three_quarter: {
     id: "three_quarter",
-    title: "Ángulo 3/4 (Escorzo)",
+    title: "2. Ángulo 3/4 (Escorzo)",
     category: "Consistencia Biométrica",
     image: "/images/angle_three_quarter.jpg",
     badge: "Mapeo Fisonómico",
@@ -42,7 +42,7 @@ const VIEWS: Record<ViewKey, ViewDetail> = {
   },
   profile: {
     id: "profile",
-    title: "Ángulo Perfil (90°)",
+    title: "3. Perfil a 90°",
     category: "Consistencia Biométrica",
     image: "/images/angle_profile.jpg",
     badge: "Perfil Anatómico",
@@ -50,6 +50,17 @@ const VIEWS: Record<ViewKey, ViewDetail> = {
     promptSnippet: "Sharp profile test shot, preserved nose bridge, ear structure and jawline contours, natural skin pores",
     resolution: "4K UHD • 2400x3200",
     lighting: "Contraluz suave sobre relieve de mandíbula",
+  },
+  editorial: {
+    id: "editorial",
+    title: "Retrato Editorial de Estudio",
+    category: "Sesión de Campaña",
+    image: "/images/hero_influencer.jpg",
+    badge: "Lookbook Moda",
+    similarity: "100% Identidad en Escena",
+    promptSnippet: "35mm natural light test portrait, cozy knit sweater, real skin pores, warm light reflection, 85mm f/1.4",
+    resolution: "4K UHD • 2400x3200",
+    lighting: "Luz de ventana suave al atardecer",
   },
   cafe: {
     id: "cafe",
@@ -185,9 +196,22 @@ export default function HeroStudioDemo() {
               </div>
 
               <div className="section-label" style={{ marginTop: 14 }}>
-                Generación Lifestyle
+                Escenas Lifestyle & Editorial
               </div>
               <div className="angle-buttons-list">
+                <button
+                  type="button"
+                  className={`angle-btn ${activeKey === "editorial" ? "selected" : ""}`}
+                  onClick={() => setActiveKey("editorial")}
+                >
+                  <span className="angle-icon">📸</span>
+                  <div className="angle-btn-text">
+                    <strong>Retrato Editorial</strong>
+                    <small>Luz suave de estudio</small>
+                  </div>
+                  {activeKey === "editorial" && <span className="active-dot" />}
+                </button>
+
                 <button
                   type="button"
                   className={`angle-btn ${activeKey === "cafe" ? "selected" : ""}`}
@@ -237,46 +261,48 @@ export default function HeroStudioDemo() {
           {/* Right Column: Interactive Viewport with Real Photo */}
           <div className="studio-viewport-col">
             <div className={`studio-canvas ${showPoreInspect ? "zoomed" : ""}`}>
-              {/* Actual Generated Image */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={active.image}
-                alt={active.title}
-                key={active.image}
-                className={`canvas-main-img ${showPoreInspect ? "zoom-scale" : ""}`}
-              />
+              {/* Frame with 3:4 aspect-ratio to ensure the entire face is always 100% framed */}
+              <div className="canvas-frame">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={active.image}
+                  alt={active.title}
+                  key={active.image}
+                  className={`canvas-main-img ${showPoreInspect ? "zoom-scale" : ""}`}
+                />
 
-              {/* Biometric Scan Overlay */}
-              {showBiometrics && !showPoreInspect && (
-                <div className="biometric-hud" aria-hidden="true">
-                  <div className="hud-corner tl" />
-                  <div className="hud-corner tr" />
-                  <div className="hud-corner bl" />
-                  <div className="hud-corner br" />
+                {/* Biometric Scan Overlay */}
+                {showBiometrics && !showPoreInspect && (
+                  <div className="biometric-hud" aria-hidden="true">
+                    <div className="hud-corner tl" />
+                    <div className="hud-corner tr" />
+                    <div className="hud-corner bl" />
+                    <div className="hud-corner br" />
 
-                  {activeKey === "base" && (
-                    <>
-                      <div className="hud-marker marker-eye-l">
-                        <span className="hud-ping" />
-                        <span className="hud-label">Iris Avellana • Match 100%</span>
-                      </div>
-                      <div className="hud-marker marker-eye-r">
-                        <span className="hud-ping" />
-                      </div>
-                      <div className="hud-marker marker-nose">
-                        <span className="hud-ping" />
-                        <span className="hud-label">Fisonomía fijada</span>
-                      </div>
-                      <div className="hud-marker marker-skin">
-                        <span className="hud-ping" />
-                        <span className="hud-label">Micro-poros naturales</span>
-                      </div>
-                    </>
-                  )}
+                    {activeKey === "base" && (
+                      <>
+                        <div className="hud-marker marker-eye-l">
+                          <span className="hud-ping" />
+                          <span className="hud-label">Iris Avellana • 100%</span>
+                        </div>
+                        <div className="hud-marker marker-eye-r">
+                          <span className="hud-ping" />
+                        </div>
+                        <div className="hud-marker marker-nose">
+                          <span className="hud-ping" />
+                          <span className="hud-label">Fisonomía fijada</span>
+                        </div>
+                        <div className="hud-marker marker-skin">
+                          <span className="hud-ping" />
+                          <span className="hud-label">Micro-poros naturales</span>
+                        </div>
+                      </>
+                    )}
 
-                  <div className="hud-scanline" />
-                </div>
-              )}
+                    <div className="hud-scanline" />
+                  </div>
+                )}
+              </div>
 
               {/* Magnifier / Macro Inspection Banner */}
               {showPoreInspect && (
