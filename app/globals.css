@@ -21,10 +21,11 @@ button:disabled { opacity:.5; cursor:default; }
 .msg.err { color:var(--err); background:rgba(255,107,107,.1); }
 .top { border-bottom:1px solid var(--line); background:var(--card); position:sticky; top:0; z-index:10; }
 .top-in { max-width:1100px; margin:0 auto; padding:0 16px; height:56px; display:flex; align-items:center; gap:4px; }
-.logo { font-weight:800; font-size:20px; color:var(--accent); text-decoration:none; margin-right:16px; }
+.top a.logo { display:flex; align-items:center; gap:10px; font-weight:800; font-size:22px; letter-spacing:-.02em; color:var(--text); text-decoration:none; margin-right:20px; padding:4px 8px 4px 0; }
+.top a.logo span { background:linear-gradient(90deg,#9aa8ff,#7c5cff); -webkit-background-clip:text; background-clip:text; color:transparent; }
 .top a, .navbtn { color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:8px; border:0; background:transparent; font:inherit; cursor:pointer; }
 .top a.active, .navbtn.active, .top a:hover, .navbtn:hover { color:var(--text); background:var(--bg); }
-.top .logo:hover { background:transparent; }
+.top a.logo:hover { background:transparent; }
 .spacer { flex:1; }
 .dd { position:relative; }
 .menu { position:absolute; top:44px; left:0; width:300px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:6px; box-shadow:0 12px 32px rgba(0,0,0,.4); }

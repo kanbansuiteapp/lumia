@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import Logo from "@/components/Logo";
 import { getUser } from "@/lib/auth";
 
 export default async function PublicLayout({ children }: { children: ReactNode }) {
@@ -8,7 +9,7 @@ export default async function PublicLayout({ children }: { children: ReactNode }
     <div className="page">
       <header className="top">
         <div className="top-in">
-          <Link href="/" className="logo">Lumia</Link>
+          <Logo href="/" />
           <Link href="/#como-funciona">Cómo funciona</Link>
           <Link href="/#funciones">Funciones</Link>
           <Link href="/#precios">Precios</Link>

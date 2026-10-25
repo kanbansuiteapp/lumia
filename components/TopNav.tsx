@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import Logo from "./Logo";
 import ProfileMenu from "./ProfileMenu";
 
 const GENERAR = [
@@ -29,7 +30,7 @@ export default function TopNav({ email, name, admin }: { email: string; name: st
   return (
     <header className="top">
       <div className="top-in">
-        <Link href="/modelos" className="logo">Lumia</Link>
+        <Logo href="/modelos" />
         <div className="dd" ref={ref}>
           <button className={`navbtn ${inGenerar ? "active" : ""}`} onClick={() => setOpen(!open)}>Generar ▾</button>
           {open && (
