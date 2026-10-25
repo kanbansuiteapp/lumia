@@ -73,7 +73,7 @@ function ProviderCard({ p, onChange }: { p: ProviderInfo; onChange: () => void }
   );
 }
 
-export default function Home() {
+export default function Configuracion() {
   const [list, setList] = useState<ProviderInfo[]>([]);
 
   async function load() {
@@ -84,9 +84,9 @@ export default function Home() {
 
   return (
     <main>
-      <h1>Lumia</h1>
+      <h1>Configuración</h1>
       <p className="sub">
-        Conecta tus proveedores. Al guardar, la clave se verifica contra el proveedor y solo se guarda si funciona.
+        Conecta las API de tus proveedores. Al guardar, la clave se verifica contra el proveedor y solo se guarda si funciona.
       </p>
       {list.map((p) => (
         <ProviderCard key={p.id} p={p} onChange={load} />

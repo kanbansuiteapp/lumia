@@ -13,13 +13,15 @@ Herramientas: Gemini con Nano Banana Pro.
    - Método alternativo: buscar una referencia externa y transformarla.
 2. Generar la imagen.
 3. Dar más realismo: pasar la imagen por un Gem de Gemini configurado con los parámetros de realismo, usando [prompts/01-realismo-facial.md](prompts/01-realismo-facial.md).
-4. Consistencia: técnica de tres ángulos del mismo rostro para garantizar consistencia total.
+4. Consistencia: técnica de tres ángulos del mismo rostro (perfiles, picados, contrapicados) para garantizar consistencia total.
+5. Prompt inicial de la imagen base: [prompts/05-imagen-base.md](prompts/05-imagen-base.md).
 
 ## Paso 2: System Prompt del influencer
 
 - Pasar la imagen base por [prompts/02-analisis-influencer.md](prompts/02-analisis-influencer.md).
 - Guardar el resultado como archivo de conocimiento.
-- Configurar el asistente de IA con ese archivo y el system prompt (según el tutorial, aquí está una de las claves).
+- Versión corta en Markdown: [prompts/04-analisis-markdown.md](prompts/04-analisis-markdown.md).
+- Crear el asistente (Gem, Custom GPT o Proyecto) con el system prompt de [prompts/03-system-prompt-asistente.md](prompts/03-system-prompt-asistente.md) y el análisis como archivo de conocimiento. Es el motor que genera los prompts de los pasos 3 y 4.
 
 ## Paso 3: Contenido lifestyle
 
@@ -31,11 +33,8 @@ Herramientas: Gemini con Nano Banana Pro.
 
 - Animar el contenido siguiendo tendencias del momento, sin relleno y sin edición.
 - Técnica de frame inicial y frame final.
+- Prompt de ejemplo para Veo 3.1: [prompts/06-animacion-video.md](prompts/06-animacion-video.md).
 - Estrategia final.
-
-## Pendiente
-
-El texto recibido se corta en el Paso 1 (cuando menciona el Gem de realismo). Faltan los detalles de la técnica de tres ángulos, el system prompt, Pinterest y la animación.
 
 ## Estructura
 
@@ -43,4 +42,8 @@ El texto recibido se corta en el Paso 1 (cuando menciona el Gem de realismo). Fa
 prompts/
   01-realismo-facial.md
   02-analisis-influencer.md
+  03-system-prompt-asistente.md
+  04-analisis-markdown.md
+  05-imagen-base.md
+  06-animacion-video.md
 ```
