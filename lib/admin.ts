@@ -6,6 +6,7 @@ export type AdminUser = {
   created_at: string;
   last_sign_in_at: string | null;
   confirmed: boolean;
+  admin: boolean;
   suspended: boolean;
   models: number;
   images: number;
@@ -33,6 +34,7 @@ export async function listAdminUsers(): Promise<{ users: AdminUser[]; orphans: {
     created_at: u.created_at,
     last_sign_in_at: u.last_sign_in_at ?? null,
     confirmed: !!u.email_confirmed_at,
+    admin: u.app_metadata?.role === "superadmin",
     suspended: !!u.banned_until && new Date(u.banned_until) > new Date(),
     models: models.get(u.id) ?? 0,
     images: images.get(u.id) ?? 0,

@@ -28,15 +28,10 @@ export function originOf(req: Request) {
   return host ? `${proto}://${host}` : new URL(req.url).origin;
 }
 
-// Super admin = correo verificado incluido en SUPERADMIN_EMAILS (por defecto, el del creador).
-const ADMINS = () =>
-  (process.env.SUPERADMIN_EMAILS ?? "kanbansuite@gmail.com")
-    .split(",")
-    .map((e) => e.trim().toLowerCase())
-    .filter(Boolean);
-
-export function isSuperAdmin(user: { email?: string | null; email_confirmed_at?: string | null } | null | undefined) {
-  return !!user?.email && !!user.email_confirmed_at && ADMINS().includes(user.email.toLowerCase());
+// Super admin = usuario con app_metadata.role = "superadmin" en Supabase Auth.
+// Solo se puede asignar desde Supabase (panel o API de servicio); un usuario no puede editarlo.
+export function isSuperAdmin(user: { app_metadata?: { role?: string } | null } | null | undefined) {
+  return user?.app_metadata?.role === "superadmin";
 }
 
 export const forbidden = () => NextResponse.json({ ok: false, message: "Solo el super admin puede hacer esto." }, { status: 403 });

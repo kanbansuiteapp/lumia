@@ -74,7 +74,7 @@ export default function AdminPanel() {
             {!loaded && <tr><td colSpan={8} className="used">Cargando...</td></tr>}
             {users.map((u) => (
               <tr key={u.id}>
-                <td>{u.email}{u.id === me && <span className="tag"> (tú)</span>}</td>
+                <td>{u.email}{u.id === me && <span className="tag"> (tú)</span>}{u.admin && <span className="tag"> · super admin</span>}</td>
                 <td>{fmt(u.created_at)}</td>
                 <td>{fmt(u.last_sign_in_at)}</td>
                 <td>{u.models}</td>
@@ -82,7 +82,7 @@ export default function AdminPanel() {
                 <td>{u.keys}</td>
                 <td>{u.suspended ? <span style={{ color: "var(--err)" }}>Suspendido</span> : u.confirmed ? <span className="tag">Activo</span> : <span className="used">Sin confirmar</span>}</td>
                 <td style={{ whiteSpace: "nowrap" }}>
-                  {u.id !== me && (
+                  {u.id !== me && !u.admin && (
                     <>
                       <button disabled={busy === u.id} onClick={() => suspend(u)}>{u.suspended ? "Reactivar" : "Suspender"}</button>{" "}
                       <button disabled={busy === u.id} onClick={() => remove(u)}>Eliminar</button>
