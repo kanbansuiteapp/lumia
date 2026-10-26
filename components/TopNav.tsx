@@ -47,7 +47,6 @@ export default function TopNav({ email, name, admin }: { email: string; name: st
         <Link href="/modelos" className={path.startsWith("/modelos") ? "active" : ""}>Mis modelos</Link>
         <Link href="/galeria" className={path.startsWith("/galeria") ? "active" : ""}>Galería</Link>
         <span className="spacer" />
-        {admin && <Link href="/admin" className={path.startsWith("/admin") ? "active" : ""}>Admin</Link>}
         <Link href="/configuracion" className={path.startsWith("/configuracion") ? "active" : ""}>Configuración</Link>
         <ProfileMenu name={name} email={email} admin={admin} />
       </div>

@@ -56,10 +56,10 @@ export default function AdminPanel() {
 
   const total = (k: "models" | "images" | "keys") => users.reduce((s, u) => s + u[k], 0);
   return (
-    <main>
+    <div>
       <div className="head">
         <div>
-          <h1>Panel de administración</h1>
+          <h2 style={{ margin: 0, fontSize: 20 }}>Usuarios y accesos</h2>
           <p className="sub" style={{ marginBottom: 0 }}>Solo tú ves esto. Crea y gestiona las cuentas de Lumia.</p>
         </div>
         <button className="primary" onClick={() => setModal({ user: null })}>+ Crear cuenta</button>
@@ -114,6 +114,6 @@ export default function AdminPanel() {
         </table>
       </div>
       {modal && <AdminUserModal user={modal.user} onClose={() => setModal(null)} onSaved={load} />}
-    </main>
+    </div>
   );
 }
