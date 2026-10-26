@@ -1,9 +1,13 @@
+import { accessState, accessUntil, type Access } from "./access";
 import { BUCKET, db } from "./db";
 
 export type AdminUser = {
   id: string;
   email: string;
   name: string;
+  phone: string;
+  access: Access;
+  access_until: string | null;
   created_at: string;
   last_sign_in_at: string | null;
   confirmed: boolean;
@@ -33,6 +37,9 @@ export async function listAdminUsers(): Promise<{ users: AdminUser[]; orphans: {
     id: u.id,
     email: u.email ?? "(sin correo)",
     name: (u.user_metadata?.full_name as string) ?? "",
+    phone: (u.user_metadata?.phone as string) ?? "",
+    access: accessState(u),
+    access_until: accessUntil(u),
     created_at: u.created_at,
     last_sign_in_at: u.last_sign_in_at ?? null,
     confirmed: !!u.email_confirmed_at,

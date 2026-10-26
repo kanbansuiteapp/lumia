@@ -3,8 +3,19 @@
 import { useCallback, useEffect, useState } from "react";
 import { type AdminUser } from "@/lib/admin";
 import { api } from "@/lib/client";
+import AdminUserModal from "./AdminUserModal";
 
 const fmt = (d: string | null) => (d ? new Date(d).toLocaleString() : "—");
+
+function accessLabel(u: AdminUser) {
+  if (u.admin) return <span className="tag">Siempre</span>;
+  if (u.access === "pending") return <span style={{ color: "var(--err)" }}>Pendiente</span>;
+  if (u.access_until === "never") return <span className="tag">Sin vencimiento</span>;
+  const d = new Date(u.access_until!);
+  const days = Math.ceil((d.getTime() - Date.now()) / 86_400_000);
+  if (u.access === "expired") return <span style={{ color: "var(--err)" }}>Vencido el {d.toLocaleDateString()}</span>;
+  return <span>{d.toLocaleDateString()} <span className="used">({days} d)</span></span>;
+}
 
 export default function AdminPanel() {
   const [users, setUsers] = useState<AdminUser[]>([]);
@@ -12,6 +23,7 @@ export default function AdminPanel() {
   const [me, setMe] = useState("");
   const [loaded, setLoaded] = useState(false);
   const [busy, setBusy] = useState("");
+  const [modal, setModal] = useState<{ user: AdminUser | null } | null>(null);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
 
   const load = useCallback(async () => {
@@ -45,8 +57,14 @@ export default function AdminPanel() {
   const total = (k: "models" | "images" | "keys") => users.reduce((s, u) => s + u[k], 0);
   return (
     <main>
-      <h1>Panel de administración</h1>
-      <p className="sub">Solo tú ves esto. Gestiona las cuentas de Lumia.</p>
+      <div className="head">
+        <div>
+          <h1>Panel de administración</h1>
+          <p className="sub" style={{ marginBottom: 0 }}>Solo tú ves esto. Crea y gestiona las cuentas de Lumia.</p>
+        </div>
+        <button className="primary" onClick={() => setModal({ user: null })}>+ Crear cuenta</button>
+      </div>
+      <div style={{ height: 16 }} />
 
       <div className="cards4" style={{ marginBottom: 16 }}>
         <div className="card"><div className="used">Usuarios</div><div className="stat">{users.length}</div></div>
@@ -68,14 +86,14 @@ export default function AdminPanel() {
       <div className="card" style={{ padding: 0, overflowX: "auto" }}>
         <table className="tbl">
           <thead>
-            <tr><th>Correo</th><th>Registro</th><th>Último acceso</th><th>Modelos</th><th>Imágenes</th><th>Claves</th><th>Estado</th><th></th></tr>
+            <tr><th>Correo</th><th>Acceso</th><th>Último acceso</th><th>Modelos</th><th>Imágenes</th><th>Claves</th><th>Estado</th><th></th></tr>
           </thead>
           <tbody>
             {!loaded && <tr><td colSpan={8} className="used">Cargando...</td></tr>}
             {users.map((u) => (
               <tr key={u.id}>
-                <td>{u.name && <div>{u.name}</div>}<span className={u.name ? "used" : ""}>{u.email}</span>{u.id === me && <span className="tag"> (tú)</span>}{u.admin && <span className="tag"> · super admin</span>}</td>
-                <td>{fmt(u.created_at)}</td>
+                <td>{u.name && <div>{u.name}</div>}<span className={u.name ? "used" : ""}>{u.email}</span>{u.phone && <div className="used">{u.phone}</div>}{u.id === me && <span className="tag"> (tú)</span>}{u.admin && <span className="tag"> · super admin</span>}</td>
+                <td>{accessLabel(u)}</td>
                 <td>{fmt(u.last_sign_in_at)}</td>
                 <td>{u.models}</td>
                 <td>{u.images}</td>
@@ -84,6 +102,7 @@ export default function AdminPanel() {
                 <td style={{ whiteSpace: "nowrap" }}>
                   {u.id !== me && !u.admin && (
                     <>
+                      <button disabled={busy === u.id} onClick={() => setModal({ user: u })}>{u.access === "pending" ? "Activar" : "Editar"}</button>{" "}
                       <button disabled={busy === u.id} onClick={() => suspend(u)}>{u.suspended ? "Reactivar" : "Suspender"}</button>{" "}
                       <button disabled={busy === u.id} onClick={() => remove(u)}>Eliminar</button>
                     </>
@@ -94,6 +113,7 @@ export default function AdminPanel() {
           </tbody>
         </table>
       </div>
+      {modal && <AdminUserModal user={modal.user} onClose={() => setModal(null)} onSaved={load} />}
     </main>
   );
 }

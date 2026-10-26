@@ -1988,3 +1988,7 @@ a.btn-link.big.primary { color: #fff; }
   .ig-name-row { justify-content: center; }
   .ig-stats-row { justify-content: center; }
 }
+.cred { background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:12px 14px; display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+.cred div { display:flex; flex-direction:column; gap:2px; word-break:break-all; }
+.cred strong { font-family:ui-monospace,monospace; font-size:15px; }
+input[type=date] { color-scheme:dark; }
