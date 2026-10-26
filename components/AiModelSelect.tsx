@@ -22,7 +22,7 @@ export default function AiModelSelect({
     <>
       <Dropdown value={value} onChange={onChange} options={options} />
       {Object.keys(configured).length > 0 && !configured[provider] && (
-        <span className="used">
+        <span className="used" style={{ alignSelf: "center" }}>
           Sin API guardada. <a href="/configuracion" style={{ color: "var(--accent)" }}>Configurar</a>
         </span>
       )}
