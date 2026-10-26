@@ -14,6 +14,7 @@ export async function GET() {
       id: p.id,
       name: p.name,
       usedFor: p.usedFor,
+      docsUrl: p.docsUrl ?? null,
       fields: p.fields,
       savedAt: saved[p.id] ?? null,
     })),

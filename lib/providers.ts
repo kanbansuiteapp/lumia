@@ -6,6 +6,7 @@ export type Provider = {
   id: string;
   name: string;
   usedFor: string;
+  docsUrl?: string;
   fields: Field[];
   test: (v: Record<string, string>) => Promise<TestResult>;
 };
@@ -40,6 +41,7 @@ export const providers: Provider[] = [
     id: "gemini",
     name: "Google Gemini",
     usedFor: "Nano Banana Pro (imágenes) y Veo 3.1 (video)",
+    docsUrl: "https://aistudio.google.com/apikey",
     fields: [{ name: "apiKey", label: "API Key" }],
     test: (v) =>
       check(
@@ -67,6 +69,7 @@ export const providers: Provider[] = [
     id: "openai",
     name: "OpenAI",
     usedFor: "Asistente / análisis visual",
+    docsUrl: "https://platform.openai.com/api-keys",
     fields: [{ name: "apiKey", label: "API Key" }],
     test: (v) =>
       check(
@@ -79,6 +82,7 @@ export const providers: Provider[] = [
     id: "anthropic",
     name: "Anthropic",
     usedFor: "Asistente / análisis visual",
+    docsUrl: "https://console.anthropic.com/settings/keys",
     fields: [{ name: "apiKey", label: "API Key" }],
     test: (v) =>
       check(
@@ -91,6 +95,7 @@ export const providers: Provider[] = [
     id: "replicate",
     name: "Replicate",
     usedFor: "Modelos alternativos de imagen y video",
+    docsUrl: "https://replicate.com/account/api-tokens",
     fields: [{ name: "apiKey", label: "API Token" }],
     test: (v) =>
       check(
@@ -103,6 +108,7 @@ export const providers: Provider[] = [
     id: "elevenlabs",
     name: "ElevenLabs",
     usedFor: "Voz del influencer",
+    docsUrl: "https://elevenlabs.io/app/settings/api-keys",
     fields: [{ name: "apiKey", label: "API Key" }],
     test: (v) =>
       check(
