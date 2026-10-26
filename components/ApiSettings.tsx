@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { api } from "@/lib/client";
+import { useConfirm } from "./useConfirm";
 
 type Field = { name: string; label: string };
 type Provider = { id: string; name: string; usedFor: string; docsUrl: string | null; fields: Field[]; savedAt: string | null };
@@ -93,6 +94,7 @@ export default function ApiSettings() {
   const [list, setList] = useState<Provider[] | null>(null);
   const [checks, setChecks] = useState<Record<string, Check>>({});
   const [modal, setModal] = useState<Provider | null>(null);
+  const { ask, dialog } = useConfirm();
 
   const verify = useCallback(async (id: string) => {
     setChecks((c) => ({ ...c, [id]: { state: "checking" } }));
@@ -114,7 +116,7 @@ export default function ApiSettings() {
   }
 
   async function remove(p: Provider) {
-    if (!confirm(`¿Desconectar ${p.name}? Se borra la clave guardada.`)) return;
+    if (!(await ask({ title: `¿Desconectar ${p.name}?`, message: "Se borra la clave guardada. Podrás conectarla de nuevo cuando quieras.", confirmLabel: "Desconectar", danger: true }))) return;
     await api("/api/keys", "DELETE", { provider: p.id });
     setChecks((c) => { const { [p.id]: _, ...rest } = c; return rest; });
     setList((l) => l?.map((x) => (x.id === p.id ? { ...x, savedAt: null } : x)) ?? l);
@@ -157,6 +159,7 @@ export default function ApiSettings() {
         })}
       </div>
       {modal && <ConnectModal p={modal} onClose={() => setModal(null)} onSaved={onSaved} />}
+      {dialog}
     </>
   );
 }

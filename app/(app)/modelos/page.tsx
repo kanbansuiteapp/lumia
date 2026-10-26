@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import AiModelSelect from "@/components/AiModelSelect";
+import { useConfirm } from "@/components/useConfirm";
 import { type Img, type Influencer, api, readImage, useConfigured, useInfluencers } from "@/lib/client";
 import { ANGLES, FROM_IMAGE_PROMPT, MODELS } from "@/lib/prompts";
 
 type Msg = { ok: boolean; text: string } | null;
 
 function ModelCard({ inf, aiModel, onChanged }: { inf: Influencer; aiModel: string; onChanged: () => void }) {
+  const { ask, dialog } = useConfirm();
   const [images, setImages] = useState<Img[]>([]);
   const [prompt, setPrompt] = useState(inf.prompt ?? "");
   const [busy, setBusy] = useState("");
@@ -84,7 +86,7 @@ function ModelCard({ inf, aiModel, onChanged }: { inf: Influencer; aiModel: stri
   }
 
   async function removeModel() {
-    if (!confirm(`¿Eliminar el modelo "${inf.name}" y todas sus imágenes?`)) return;
+    if (!(await ask({ title: `¿Eliminar a ${inf.name}?`, message: "Se borran el modelo y todas sus imágenes. No se puede deshacer.", confirmLabel: "Eliminar", danger: true }))) return;
     await api("/api/influencers", "DELETE", { id: inf.id });
     onChanged();
   }
@@ -168,6 +170,7 @@ function ModelCard({ inf, aiModel, onChanged }: { inf: Influencer; aiModel: stri
         </div>
       </div>
       {msg && <div className={`msg ${msg.ok ? "ok" : "err"}`}>{msg.text}</div>}
+      {dialog}
     </div>
   );
 }

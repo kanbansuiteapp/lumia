@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { type AdminUser } from "@/lib/admin";
 import { api } from "@/lib/client";
 import AdminUserModal from "./AdminUserModal";
+import { useConfirm } from "./useConfirm";
 
 const fmt = (d: string | null) => (d ? new Date(d).toLocaleString() : "—");
 
@@ -24,6 +25,7 @@ export default function AdminPanel() {
   const [loaded, setLoaded] = useState(false);
   const [busy, setBusy] = useState("");
   const [modal, setModal] = useState<{ user: AdminUser | null } | null>(null);
+  const { ask, dialog } = useConfirm();
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
 
   const load = useCallback(async () => {
@@ -41,7 +43,7 @@ export default function AdminPanel() {
     setBusy(""); load();
   }
   async function remove(u: AdminUser) {
-    if (!confirm(`¿Eliminar a ${u.email}? Se borran su cuenta, sus ${u.models} modelos y sus ${u.images} imágenes. No se puede deshacer.`)) return;
+    if (!(await ask({ title: `¿Eliminar a ${u.name || u.email}?`, message: `Se borran su cuenta (${u.email}), sus ${u.models} modelos y sus ${u.images} imágenes. No se puede deshacer.`, confirmLabel: "Eliminar cuenta", danger: true }))) return;
     setBusy(u.id); setMsg(null);
     const d = await api("/api/admin/users", "DELETE", { id: u.id });
     setMsg(d.ok ? { ok: true, text: `${u.email} eliminado.` } : { ok: false, text: d.message ?? "Error" });
@@ -114,6 +116,7 @@ export default function AdminPanel() {
         </table>
       </div>
       {modal && <AdminUserModal user={modal.user} onClose={() => setModal(null)} onSaved={load} />}
+      {dialog}
     </div>
   );
 }
