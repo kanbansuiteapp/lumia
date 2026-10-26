@@ -7,11 +7,11 @@ const STEPS = [
     num: "01",
     badge: "Paso 1: Fundamento",
     title: "Modelo Base & Realismo Facial",
-    desc: "El éxito de un influencer no reside en prompts complejos, sino en partir de una imagen base hiperrealista. Lumia calibra parámetros de porosidad, refracción de luz e imperfecciones cutáneas que eliminan por completo el aspecto artificial o de cera.",
+    desc: "El éxito de un influencer no reside en prompts complejos, sino en partir de una imagen base hiperrealista. Lumia incluye un estilo de realismo (poros, luz natural e imperfecciones de la piel) que reduce el aspecto artificial o de cera.",
     features: [
       "Generación vía Gemini Nano Banana o Replicate Flux",
-      "Calibración de micro-poros y textura epidérmica",
-      "Iluminación fotorrealista de lente 85mm f/1.4",
+      "Estilo de realismo: poros y textura de piel",
+      "Luz natural y profundidad de campo tipo fotografía",
       "Compatible con referencias externas transformadas",
     ],
     codeSnippet: `// Parámetros de Realismo Facial Lumia
@@ -23,17 +23,17 @@ const basePrompt = {
   },
   {
     num: "02",
-    badge: "Paso 2: Biometría",
+    badge: "Paso 2: Ángulos",
     title: "Técnica de los 3 Ángulos",
-    desc: "Fijamos la identidad anatómica de tu personaje en tres perspectivas obligatorias: frontal de estudio, escorzo a 3/4 y perfil a 90°. Esta tríada biométrica actúa como la huella dactilar de tu influencer para evitar que su cara mute.",
+    desc: "Fijas la apariencia de tu personaje en tres perspectivas: frontal, 3/4 y perfil. Esas imágenes sirven como referencia para que su cara cambie lo menos posible entre una imagen y otra.",
     features: [
-      "Bloqueo fisonómico permanente",
-      "Consistencia de iris, puente nasal y mandíbula",
-      "Tolerancia cero a deformaciones angulares",
-      "Exportable a cualquier entorno de render",
+      "Referencia de rostro guardada en tu modelo",
+      "Ayuda a mantener ojos, nariz y mandíbula",
+      "Puedes repetir un ángulo si no sale bien",
+      "Descargables desde tu galería",
     ],
-    codeSnippet: `// Tríada Biométrica Maestra
-const biometricAngles = [
+    codeSnippet: `// Ángulos de referencia (ejemplo ilustrativo)
+const referenceAngles = [
   { angle: "frontal_studio", target: "facial_symmetry" },
   { angle: "three_quarter_profile", target: "cheekbone_depth" },
   { angle: "lateral_90", target: "jawline_and_nasal_bridge" },
@@ -43,12 +43,12 @@ const biometricAngles = [
     num: "03",
     badge: "Paso 3: Asistente IA",
     title: "System Prompt & Archivo de Conocimiento",
-    desc: "Lumia procesa los 3 ángulos con modelos de visión y redacta un documento fisonómico exhaustivo en Markdown. Este archivo de conocimiento alimenta a tu Asistente personalizado para que cualquier escena que pidas conserve la misma persona.",
+    desc: "Lumia analiza los ángulos con un modelo de visión y redacta una descripción detallada en Markdown. Esa descripción se añade a cada generación para que las escenas que pidas se parezcan a tu modelo.",
     features: [
-      "Extracción automática de rasgos fisonómicos",
-      "Generación de System Prompt personalizado",
-      "Eliminación de cuellos de botella en la delegación",
-      "Cualquier colaborador puede generar contenido consistente",
+      "Descripción automática de rasgos",
+      "Prompt del modelo editable",
+      "Pensado para delegar la creación de contenido",
+      "Cualquiera con acceso a tu cuenta puede generar con el mismo modelo",
     ],
     codeSnippet: `// System Prompt del Asistente del Influencer
 system: "Actúas como el director visual de Elena Vance.
@@ -59,12 +59,12 @@ ojos verdes avellana, tez con micro-poros, pelo castaño con destellos miel."`,
     num: "04",
     badge: "Paso 4: Escalado",
     title: "Contenido Lifestyle & Animación en Vídeo",
-    desc: "Crea tandas temáticas masivas para su feed (café, viajes de lujo, eventos de gala, fitness) y dale vida con animación cinemática usando Veo 3.1 y Kling 2.6 mediante la técnica de frame inicial y final.",
+    desc: "Crea tandas temáticas para su feed (café, viajes, moda, gimnasio…). La animación con Veo 3.1 y Kling 2.6, con frame inicial y final, está en desarrollo.",
     features: [
-      "Generación por colecciones temáticas en 1 clic",
+      "Generación por colecciones temáticas",
       "Intercambio de cara con referencias virales de Pinterest",
-      "Animación cinemática sin cortes con Veo 3.1 & Kling",
-      "Descarga en alta definición lista para programar en redes",
+      "Animación con Veo 3.1 y Kling (próximamente)",
+      "Imágenes guardadas en tu galería",
     ],
     codeSnippet: `// Pipeline de Animación Cinemática
 const animationConfig = {
@@ -84,11 +84,10 @@ export default function StepByStepMethod() {
       <div className="section-header-center">
         <div className="pill-badge">Flujo Profesional de 4 Pasos</div>
         <h2 className="headline-h2">
-          Cómo se Construye un <span className="gradient-text">Influencer Virtual Rentable</span>
+          Cómo se Construye un <span className="gradient-text">Influencer Virtual</span>
         </h2>
         <p className="section-subtext">
-          Diseñado para creadores y agencias que necesitan un proceso predecible, escalable y sin cuellos de
-          botella creativos.
+          Un proceso ordenado para crear y mantener un influencer virtual, paso a paso.
         </p>
       </div>
 

@@ -10,7 +10,7 @@ export default async function Landing() {
   const user = await getUser();
   const cta = user
     ? { href: "/modelos", label: "Ir al Estudio de Modelos" }
-    : { href: "/registro", label: "Crear mi Influencer Gratis" };
+    : { href: "/registro", label: "Crear mi Influencer" };
 
   return (
     <div className="landing-container">
@@ -26,7 +26,7 @@ export default async function Landing() {
             <span className="hero-pill-sparkle">✨</span>
             <span className="hero-pill-text">Plataforma Profesional de Influencers con IA</span>
             <span className="hero-pill-dot" />
-            <span className="hero-pill-sub">Consistencia Biométrica 100%</span>
+            <span className="hero-pill-sub">Cara de referencia en cada imagen</span>
           </div>
 
           <h1 className="hero-headline">
@@ -34,8 +34,8 @@ export default async function Landing() {
           </h1>
 
           <p className="hero-lead">
-            Diseña un rostro único e inconfundible con poros y textura orgánica natural. Fija sus 3 ángulos de
-            consistencia anatómica, genera sesiones lifestyle en cualquier rincón del mundo y anima en vídeo.
+            Diseña un rostro propio con textura de piel natural. Fija sus 3 ángulos de referencia para mantener
+            la consistencia, genera sesiones lifestyle en distintos escenarios y, próximamente, anímalo en vídeo.
             Sin depender de agencias ni modelos tradicionales.
           </p>
 
@@ -59,13 +59,13 @@ export default async function Landing() {
           {/* Social Proof & Trust Metrics Bar */}
           <div className="hero-metrics-ribbon">
             <div className="metric-item">
-              <span className="metric-val">100%</span>
-              <span className="metric-lbl">Consistencia de Rostro</span>
+              <span className="metric-val">3 ángulos</span>
+              <span className="metric-lbl">Referencias de rostro</span>
             </div>
             <div className="metric-divider" />
             <div className="metric-item">
-              <span className="metric-val">Poros Reales</span>
-              <span className="metric-lbl">Sin aspecto de plástico</span>
+              <span className="metric-val">Realismo</span>
+              <span className="metric-lbl">Estilo con poros y textura</span>
             </div>
             <div className="metric-divider" />
             <div className="metric-item">
@@ -74,8 +74,8 @@ export default async function Landing() {
             </div>
             <div className="metric-divider" />
             <div className="metric-item">
-              <span className="metric-val">4K UHD</span>
-              <span className="metric-lbl">Resolución para Instagram</span>
+              <span className="metric-val">Multi-IA</span>
+              <span className="metric-lbl">Gemini, OpenAI y Replicate</span>
             </div>
           </div>
 
@@ -115,8 +115,8 @@ export default async function Landing() {
             </h2>
             <p className="section-subtext">
               ¿Viste una pose viral, un outfit de tendencia o una iluminación que encaja con tu marca?
-              Sube la imagen de referencia y Lumia reconstruye la escena manteniendo el estilismo, la luz y la pose,
-              pero colocando el rostro de tu influencer.
+              Sube la imagen de referencia y Lumia le pide a la IA que recree la escena (estilismo, luz y pose)
+              con el rostro de tu influencer. El parecido y la fidelidad dependen del modelo de IA que uses.
             </p>
           </div>
 
@@ -124,13 +124,13 @@ export default async function Landing() {
             <div className="swap-columns-grid">
               <div className="swap-col">
                 <div className="swap-col-header">
-                  <span className="swap-tag">Foto de Referencia</span>
-                  <span className="swap-source">Pinterest / Instagram Trend</span>
+                  <span className="swap-tag">Imagen de ejemplo</span>
+                  <span className="swap-source">Así sería una referencia (Pinterest, Instagram…)</span>
                 </div>
                 <div className="swap-col-img-wrap">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/images/lifestyle_travel.jpg" alt="Referencia de Pose" className="swap-img" />
-                  <div className="swap-col-badge">Pose & Estilismo de Entrada</div>
+                  <div className="swap-col-badge">Escena de entrada</div>
                 </div>
               </div>
 
@@ -138,23 +138,23 @@ export default async function Landing() {
                 <div className="swap-arrow-circle">
                   <span>⚡</span>
                 </div>
-                <span className="swap-process-label">Intercambio Biométrico Lumia</span>
+                <span className="swap-process-label">Intercambio de cara</span>
               </div>
 
               <div className="swap-col">
                 <div className="swap-col-header">
-                  <span className="swap-tag output">Resultado Consistente</span>
-                  <span className="swap-source">Identidad de tu Modelo</span>
+                  <span className="swap-tag output">Resultado de ejemplo</span>
+                  <span className="swap-source">Con la cara de tu modelo</span>
                 </div>
                 <div className="swap-col-img-wrap">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src="/images/lifestyle_cafe.jpg" alt="Resultado de Intercambio" className="swap-img" />
-                  <div className="swap-col-badge output">Rostro de Elena Vance (100%)</div>
+                  <div className="swap-col-badge output">Modelo de ejemplo</div>
                 </div>
               </div>
             </div>
 
-            <div className="swap-features-bar">
+            <div className="swap-features-bar" title="Lo que Lumia le pide a la IA que conserve">
               <div className="swap-feat-chip">
                 <span>👗</span> Misma Ropa y Accesorios
               </div>
@@ -180,12 +180,12 @@ export default async function Landing() {
               <div className="pill-badge">Filosofía Transparente</div>
               <h2 className="headline-h2" style={{ textAlign: "left" }}>
                 Tus Propias API Keys: <br />
-                <span className="gradient-text">Cero Recargos, Máxima Privacidad</span>
+                <span className="gradient-text">Pagas Directo a Cada Proveedor</span>
               </h2>
               <p className="byok-desc">
-                Las demás plataformas te cobran suscripciones mensuales de $40 a $100 con paquetes cerrados de créditos.
-                En Lumia eres dueño de tu infraestructura: conectas tus claves API de Google Gemini, Replicate o OpenAI,
-                se guardan cifradas y pagas únicamente el coste real al proveedor (fracciones de céntimo por imagen).
+                Muchas plataformas funcionan con suscripción y paquetes de créditos. En Lumia conectas tus propias
+                claves API de Google Gemini, Replicate u OpenAI, se guardan cifradas y pagas directamente al
+                proveedor según su tarifa vigente.
               </p>
               <div className="byok-keys-badges">
                 <div className="byok-badge-item">
@@ -214,7 +214,7 @@ export default async function Landing() {
                   <div className="byok-field-val">AIzaSy••••••••••••••••••••••••••••••</div>
                   <div className="byok-field-status">
                     <span className="status-dot green" />
-                    <span>Conexión Verificada • Cuota Disponible</span>
+                    <span>Clave verificada</span>
                   </div>
                 </div>
 
@@ -223,14 +223,14 @@ export default async function Landing() {
                   <div className="byok-field-val">r8_••••••••••••••••••••••••••••••••••</div>
                   <div className="byok-field-status">
                     <span className="status-dot green" />
-                    <span>Conexión Verificada • Flux 1.1 Pro Activo</span>
+                    <span>Token verificado</span>
                   </div>
                 </div>
 
                 <div className="byok-saving-box">
-                  <div className="saving-label">Coste promedio por imagen en Lumia:</div>
-                  <div className="saving-cost">$0.003 - $0.02 USD</div>
-                  <div className="saving-sub">Vs $0.20 - $0.50 en plataformas con créditos inflados</div>
+                  <div className="saving-label">Coste por imagen:</div>
+                  <div className="saving-cost">Tarifa del proveedor</div>
+                  <div className="saving-sub">Consulta el precio vigente de cada proveedor</div>
                 </div>
               </div>
             </div>
@@ -242,12 +242,12 @@ export default async function Landing() {
       <section className="sec-modern sec-alt-surface">
         <div className="wrap">
           <div className="section-header-center">
-            <div className="pill-badge">Comparativa Objetiva</div>
+            <div className="pill-badge">Comparativa</div>
             <h2 className="headline-h2">
               ¿Por Qué Lumia Frente a <span className="gradient-text">Otras Alternativas?</span>
             </h2>
             <p className="section-subtext">
-              Descubre por qué las agencias y creadores profesionales eligen un flujo de trabajo fisonómico dedicado.
+              Qué cambia frente a otras formas de producir contenido para un influencer.
             </p>
           </div>
 
@@ -257,46 +257,46 @@ export default async function Landing() {
                 <tr>
                   <th>Capacidad</th>
                   <th>Fotógrafo & Modelo Real</th>
-                  <th>IAs Genéricas (Midjourney suelto)</th>
+                  <th>IA suelta, sin flujo</th>
                   <th className="highlight-col">Lumia AI Influencer Studio</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td><strong>Consistencia de Rostro</strong></td>
-                  <td>100% (Humano)</td>
-                  <td className="bad">❌ Cara diferente en cada foto</td>
-                  <td className="highlight-col good">✅ Tríada Biométrica 3-Ángulos (100%)</td>
+                  <td>Alta (es una persona real)</td>
+                  <td>Suele variar entre imágenes</td>
+                  <td className="highlight-col good">Cara de referencia, 3 ángulos y prompt del modelo</td>
                 </tr>
                 <tr>
                   <td><strong>Coste Mensual</strong></td>
-                  <td className="bad">❌ $2,500 - $6,000 / mes</td>
-                  <td>$30 - $60 / mes</td>
-                  <td className="highlight-col good">✅ Solo coste API directa (~$5 / mes)</td>
+                  <td>Producción, modelo y viajes</td>
+                  <td>Suscripción o créditos según la herramienta</td>
+                  <td className="highlight-col good">Pagas la API que uses</td>
                 </tr>
                 <tr>
                   <td><strong>Velocidad de Creación</strong></td>
-                  <td className="bad">❌ Semanas de producción</td>
-                  <td>Minutos (después de 50 reintentos)</td>
-                  <td className="highlight-col good">✅ Segundos por imagen lista</td>
+                  <td>Días o semanas</td>
+                  <td>Minutos, con varios intentos</td>
+                  <td className="highlight-col good">Segundos o minutos por imagen, según el proveedor</td>
                 </tr>
                 <tr>
                   <td><strong>Locaciones & Viajes</strong></td>
-                  <td className="bad">❌ Vuelos, hoteles y traslados</td>
-                  <td>Limitado a estilos genéricos</td>
-                  <td className="highlight-col good">✅ Cualquier ciudad del mundo en 1 clic</td>
+                  <td>Viajes y traslados</td>
+                  <td>Depende del prompt</td>
+                  <td className="highlight-col good">Escenas por prompt, organizadas en colecciones</td>
                 </tr>
                 <tr>
                   <td><strong>Efecto Piel de Plástico</strong></td>
                   <td>No aplica</td>
-                  <td className="bad">❌ Piel excesivamente lisa / cera</td>
-                  <td className="highlight-col good">✅ Textura orgánica con poros reales</td>
+                  <td>La piel puede salir muy lisa</td>
+                  <td className="highlight-col good">Estilo de realismo opcional (poros, textura)</td>
                 </tr>
                 <tr>
                   <td><strong>Animación a Vídeo</strong></td>
                   <td>Días de grabación</td>
-                  <td className="bad">❌ Sin interpolación de consistencia</td>
-                  <td className="highlight-col good">✅ Compatible con Veo 3.1 & Kling</td>
+                  <td>Herramientas aparte</td>
+                  <td className="highlight-col good">Veo y Kling: próximamente</td>
                 </tr>
               </tbody>
             </table>
@@ -308,24 +308,23 @@ export default async function Landing() {
       <section id="precios" className="sec-modern">
         <div className="wrap">
           <div className="section-header-center">
-            <div className="pill-badge">Tarifas Transparentes</div>
+            <div className="pill-badge">Acceso</div>
             <h2 className="headline-h2">
               Todo Incluido en el <span className="gradient-text">Acceso Anticipado</span>
             </h2>
             <p className="section-subtext">
-              Sin suscripciones trampa ni límites artificiales. Desbloquea la suite completa hoy mismo.
+              Crea tu cuenta y empieza a construir el feed de tu influencer.
             </p>
           </div>
 
           <div className="pricing-container">
             <div className="pricing-card-spotlight">
-              <div className="pricing-card-badge">Acceso Anticipado v2.0 • Plazas Limitadas</div>
+              <div className="pricing-card-badge">Acceso anticipado</div>
               <div className="pricing-card-header">
                 <div className="pricing-tier-title">Lumia Creator Studio</div>
                 <div className="pricing-price-row">
-                  <span className="price-currency">Acceso</span>
-                  <span className="price-amount">Gratuito</span>
-                  <span className="price-period">durante la fase Beta</span>
+                  <span className="price-amount">Acceso anticipado</span>
+                  <span className="price-period">precio por anunciar</span>
                 </div>
                 <p className="pricing-sub-desc">
                   Conecta tus claves API y empieza a construir el feed de tu influencer inmediatamente.
@@ -337,11 +336,11 @@ export default async function Landing() {
               <div className="pricing-features-list">
                 <div className="pricing-feat-row">
                   <span className="pricing-check">✓</span>
-                  <span><strong>Modelos y personajes sin límite:</strong> crea tantos influencers como desees</span>
+                  <span><strong>Varios modelos:</strong> crea los influencers que necesites</span>
                 </div>
                 <div className="pricing-feat-row">
                   <span className="pricing-check">✓</span>
-                  <span><strong>Tríada de Consistencia:</strong> Frontal, 3/4 y Perfil en alta resolución</span>
+                  <span><strong>Ángulos de consistencia:</strong> Frontal, 3/4 y Perfil como referencia</span>
                 </div>
                 <div className="pricing-feat-row">
                   <span className="pricing-check">✓</span>
@@ -353,11 +352,11 @@ export default async function Landing() {
                 </div>
                 <div className="pricing-feat-row">
                   <span className="pricing-check">✓</span>
-                  <span><strong>Integraciones Oficiales:</strong> Gemini Nano Banana, Flux 1.1 Pro y OpenAI</span>
+                  <span><strong>Integraciones:</strong> Gemini (Nano Banana), Flux 1.1 Pro y OpenAI (GPT Image)</span>
                 </div>
                 <div className="pricing-feat-row">
                   <span className="pricing-check">✓</span>
-                  <span><strong>Privacidad 100%:</strong> Tus modelos y fotos son de tu propiedad exclusiva</span>
+                  <span><strong>Cuenta privada:</strong> otros usuarios no ven tus modelos ni tus claves</span>
                 </div>
               </div>
 
@@ -389,13 +388,12 @@ export default async function Landing() {
         <div className="wrap">
           <div className="final-cta-card">
             <div className="final-cta-content">
-              <div className="pill-badge">Únete a la Revolución Virtual</div>
+              <div className="pill-badge">Empieza hoy</div>
               <h2 className="headline-h2" style={{ fontSize: "clamp(28px, 4vw, 42px)", marginBottom: 16 }}>
                 Construye la Próxima Gran <span className="gradient-text">Marca con Influencers Virtuales</span>
               </h2>
               <p className="final-cta-desc">
-                Crea tu primer modelo en menos de 3 minutos. Fija sus rasgos, genera sus primeras sesiones
-                lifestyle y empieza a publicar en redes sociales hoy mismo.
+                Crea tu primer modelo, fija sus rasgos y genera sus primeras sesiones lifestyle.
               </p>
               <div className="final-cta-buttons">
                 <Link href={cta.href} className="btn-glow-hero">

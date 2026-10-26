@@ -24,31 +24,31 @@ const VIEWS: Record<ViewKey, ViewDetail> = {
     category: "Modelo de Identidad",
     image: "/images/angle_front.jpg",
     badge: "Identidad Base Fijada",
-    similarity: "100% Biometría Maestra",
+    similarity: "Rostro de referencia",
     promptSnippet: "Clean studio test shot, front-facing angle, looking directly into camera, natural skin pores, hazel green eyes",
-    resolution: "4K UHD • 2400x3200",
+    resolution: "Imagen de ejemplo",
     lighting: "Luz suave de estudio con reflejo natural en iris",
   },
   three_quarter: {
     id: "three_quarter",
     title: "2. Ángulo 3/4 (Escorzo)",
-    category: "Consistencia Biométrica",
+    category: "Consistencia de rostro",
     image: "/images/angle_three_quarter.jpg",
     badge: "Mapeo Fisonómico",
-    similarity: "99.8% Coincidencia Facial",
+    similarity: "Ángulo 3/4",
     promptSnippet: "Clean studio test, exact same facial features, 3/4 angle, subtle confident gaze, visible skin texture",
-    resolution: "4K UHD • 2400x3200",
+    resolution: "Imagen de ejemplo",
     lighting: "Luz de relleno difusa + contorno neutro",
   },
   profile: {
     id: "profile",
     title: "3. Perfil a 90°",
-    category: "Consistencia Biométrica",
+    category: "Consistencia de rostro",
     image: "/images/angle_profile.jpg",
     badge: "Perfil Anatómico",
-    similarity: "99.6% Coincidencia Facial",
+    similarity: "Ángulo de perfil",
     promptSnippet: "Sharp profile test shot, preserved nose bridge, ear structure and jawline contours, natural skin pores",
-    resolution: "4K UHD • 2400x3200",
+    resolution: "Imagen de ejemplo",
     lighting: "Contraluz suave sobre relieve de mandíbula",
   },
   editorial: {
@@ -57,9 +57,9 @@ const VIEWS: Record<ViewKey, ViewDetail> = {
     category: "Sesión de Campaña",
     image: "/images/hero_influencer.jpg",
     badge: "Lookbook Moda",
-    similarity: "100% Identidad en Escena",
+    similarity: "Escena lifestyle",
     promptSnippet: "35mm natural light test portrait, cozy knit sweater, real skin pores, warm light reflection, 85mm f/1.4",
-    resolution: "4K UHD • 2400x3200",
+    resolution: "Imagen de ejemplo",
     lighting: "Luz de ventana suave al atardecer",
   },
   cafe: {
@@ -68,7 +68,7 @@ const VIEWS: Record<ViewKey, ViewDetail> = {
     category: "Contenido de Feed",
     image: "/images/lifestyle_cafe.jpg",
     badge: "Sesión Urbana",
-    similarity: "100% Identidad en Escena",
+    similarity: "Escena lifestyle",
     promptSnippet: "Candid lifestyle photo at outdoor historic Milanese cafe, oversized cardigan, holding espresso, morning golden hour",
     resolution: "Instagram Ready 4:5",
     lighting: "Sol de mañana (Golden Hour) + bokeh urbano",
@@ -79,7 +79,7 @@ const VIEWS: Record<ViewKey, ViewDetail> = {
     category: "Contenido de Lujo",
     image: "/images/lifestyle_travel.jpg",
     badge: "Sesión de Viajes",
-    similarity: "100% Identidad en Escena",
+    similarity: "Escena lifestyle",
     promptSnippet: "Luxury vacation photo on Amalfi cliff terrace at sunset, white linen top, gentle sea breeze, pastel villas in soft focus",
     resolution: "Instagram Ready 4:5",
     lighting: "Atardecer mediterráneo con halo dorado natural",
@@ -143,7 +143,7 @@ export default function HeroStudioDemo() {
               </div>
               <div className="model-meta">
                 <div className="model-name">
-                  Elena Vance <span className="verified-badge" title="Identidad biométrica certificada">✓</span>
+                  Elena Vance <span className="verified-badge" title="Modelo de ejemplo">✓</span>
                 </div>
                 <div className="model-handle">@elena.vance_ai</div>
                 <div className="model-niche">Digital Muse • Milan & Madrid</div>
@@ -283,7 +283,7 @@ export default function HeroStudioDemo() {
                       <>
                         <div className="hud-marker marker-eye-l">
                           <span className="hud-ping" />
-                          <span className="hud-label">Iris Avellana • 100%</span>
+                          <span className="hud-label">Iris avellana</span>
                         </div>
                         <div className="hud-marker marker-eye-r">
                           <span className="hud-ping" />

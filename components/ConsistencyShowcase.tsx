@@ -8,8 +8,8 @@ const ANGLES = [
     title: "1. Ángulo Frontal",
     subtitle: "Rostro Maestro",
     img: "/images/angle_front.jpg",
-    desc: "Define la fisonomía canónica: distancia interpupilar, forma de pómulos, grosor labial y textura base de la dermis.",
-    stat: "100% Identidad",
+    desc: "Define la cara base de tu modelo: forma del rostro, ojos, labios y textura de piel.",
+    stat: "Rostro de referencia",
     tag: "Referencia A",
   },
   {
@@ -17,8 +17,8 @@ const ANGLES = [
     title: "2. Ángulo 3/4 (Escorzo)",
     subtitle: "Proyección Tridimensional",
     img: "/images/angle_three_quarter.jpg",
-    desc: "La prueba de fuego donde fallan las IAs genéricas. Lumia mantiene la misma persona incluso cuando el rostro rota en el espacio.",
-    stat: "99.8% Coincidencia",
+    desc: "El ángulo más difícil para una IA. Usar la cara de referencia ayuda a mantener a la misma persona cuando el rostro gira.",
+    stat: "Ángulo 3/4",
     tag: "Referencia B",
   },
   {
@@ -26,8 +26,8 @@ const ANGLES = [
     title: "3. Perfil a 90°",
     subtitle: "Consistencia de Contorno",
     img: "/images/angle_profile.jpg",
-    desc: "Fija el caballete nasal, el ángulo goniaco de la mandíbula y la posición de la oreja para tomas laterales sin deformaciones.",
-    stat: "99.6% Coincidencia",
+    desc: "Aporta la nariz, la mandíbula y la oreja de lado, para tomas laterales más coherentes.",
+    stat: "Ángulo de perfil",
     tag: "Referencia C",
   },
 ];
@@ -36,22 +36,22 @@ const FEATURES_HIGHLIGHT = [
   {
     icon: "👁️",
     title: "Iris y Mirada Idénticos",
-    desc: "Tono verde avellana profundo con reflejos especulares naturales. Sin pupilas borrosas ni miradas artificiales.",
+    desc: "Ejemplo de rasgo que se describe en el prompt del modelo: el color y la mirada.",
   },
   {
     icon: "✨",
     title: "Micro-Textura y Poros Orgánicos",
-    desc: "Cada imagen conserva poros visibles, pecas sutiles y micro-imperfecciones que transmiten autenticidad humana real.",
+    desc: "El estilo de realismo pide poros visibles, pecas sutiles y pequeñas imperfecciones.",
   },
   {
     icon: "📐",
-    title: "Estructura Ósea Bloqueada",
-    desc: "Las proporciones de nariz, barbilla y pómulos no mutan entre diferentes tomas, asegurando un influencer reconocible.",
+    title: "Estructura descrita en el prompt",
+    desc: "Las proporciones se describen en el prompt del modelo para que el influencer sea reconocible.",
   },
   {
     icon: "🎨",
     title: "Adaptabilidad Lumínica",
-    desc: "La misma fisonomía reacciona con coherencia fotográfica bajo luz de estudio neutra, sol directo o atardeceres dorados.",
+    desc: "Puedes pedir la misma persona con luz de estudio, sol directo o atardecer.",
   },
 ];
 
@@ -63,12 +63,11 @@ export default function ConsistencyShowcase() {
       <div className="section-header-center">
         <div className="pill-badge">El Secreto de la Consistencia</div>
         <h2 className="headline-h2">
-          El Método de los <span className="gradient-text">3 Ángulos Biométricos</span>
+          El Método de los <span className="gradient-text">3 Ángulos de Referencia</span>
         </h2>
         <p className="section-subtext">
-          La mayoría de las herramientas de IA generan un rostro diferente en cada clic. En Lumia, calibramos
-          tu influencer a partir de 3 ángulos maestros interconectados, garantizando que sea la misma persona
-          en miles de publicaciones.
+          Muchas herramientas de IA generan un rostro distinto en cada clic. En Lumia fijas a tu influencer con
+          3 ángulos de referencia y un prompt del modelo, para que se parezca más de una imagen a otra.
         </p>
       </div>
 

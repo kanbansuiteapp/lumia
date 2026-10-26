@@ -38,7 +38,7 @@ export default async function PublicLayout({ children }: { children: ReactNode }
                   Entrar
                 </Link>
                 <Link href="/registro" className="btn-glow-primary">
-                  <span>Crear Cuenta Gratis</span>
+                  <span>Crear Cuenta</span>
                 </Link>
               </>
             )}
@@ -54,19 +54,19 @@ export default async function PublicLayout({ children }: { children: ReactNode }
             <div className="foot-brand-col">
               <Logo href="/" />
               <p className="foot-tagline">
-                Plataforma integral para crear, calibrar y monetizar influencers virtuales con
-                hiperrealismo fotográfico y consistencia anatómica total.
+                Plataforma para crear influencers virtuales: modelo base, ángulos de referencia,
+                contenido lifestyle e intercambio de cara.
               </p>
               <div className="foot-engine-status">
                 <span className="engine-status-indicator" />
-                <span>Motores Gemini, Flux y OpenAI Operativos</span>
+                <span>Compatible con Gemini, Flux y OpenAI</span>
               </div>
             </div>
 
             <div className="foot-links-col">
               <h5>Plataforma</h5>
               <Link href="/#como-funciona">El Método de 4 Pasos</Link>
-              <Link href="/#consistencia">Tríada Biométrica 360°</Link>
+              <Link href="/#consistencia">Consistencia de rostro</Link>
               <Link href="/#galeria-lifestyle">Generación Lifestyle</Link>
               <Link href="/#precios">Planes & Acceso</Link>
               <Link href="/#faq">Preguntas Frecuentes</Link>
@@ -92,13 +92,11 @@ export default async function PublicLayout({ children }: { children: ReactNode }
           </div>
 
           <div className="foot-bottom">
-            <div>© {new Date().getFullYear()} Lumia AI Inc. Todos los derechos reservados.</div>
+            <div>© {new Date().getFullYear()} Lumia. Todos los derechos reservados.</div>
             <div className="foot-meta-links">
-              <span>Privacidad Cifrada</span>
+              <span>Claves cifradas</span>
               <span>•</span>
-              <span>Conexión Directa BYOK</span>
-              <span>•</span>
-              <span>Exportación 4K</span>
+              <span>Conexión directa con tus claves (BYOK)</span>
             </div>
           </div>
         </div>

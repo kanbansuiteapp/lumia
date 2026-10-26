@@ -72,7 +72,7 @@ export default function FeedCollectionGallery() {
           Llena su Perfil de <span className="gradient-text">Contenido Lifestyle Infinito</span>
         </h2>
         <p className="section-subtext">
-          Genera tandas de 10 a 50 publicaciones por temática en minutos. Tu modelo virtual puede estar
+          Genera tandas de escenas por temática. Tu modelo virtual puede estar
           tomando un espresso en Milán hoy y cenando en la Costa Amalfitana mañana, siempre con su misma cara.
         </p>
       </div>
@@ -87,8 +87,7 @@ export default function FeedCollectionGallery() {
           <div className="ig-profile-info">
             <div className="ig-name-row">
               <span className="ig-handle">elena.vance_ai</span>
-              <span className="ig-verified">✓</span>
-              <span className="ig-badge-ai">Virtual Creator</span>
+                            <span className="ig-badge-ai">Virtual Creator</span>
             </div>
             <div className="ig-stats-row">
               <div className="ig-stat"><strong>184</strong> <span>publicaciones</span></div>
@@ -98,7 +97,7 @@ export default function FeedCollectionGallery() {
             <div className="ig-bio">
               <strong>Elena Vance</strong> · Creadora de Moda & Lifestyle con IA ✨<br />
               Explorando arquitectura, alta costura y rincones del mundo.<br />
-              <span className="ig-link">lumia.ai/model/elena-vance</span>
+              <span className="ig-link">Maqueta ilustrativa · cifras de ejemplo, no reales</span>
             </div>
           </div>
         </div>
